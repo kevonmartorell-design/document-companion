@@ -3,6 +3,10 @@ import TopBar from "@/components/dashboard/TopBar";
 import StatisticsChart from "@/components/dashboard/StatisticsChart";
 import ActiveCalls from "@/components/dashboard/ActiveCalls";
 import UserList from "@/components/dashboard/UserList";
+import ScheduleWidget from "@/components/dashboard/ScheduleWidget";
+import ComplianceWidget from "@/components/dashboard/ComplianceWidget";
+import TimeTrackingWidget from "@/components/dashboard/TimeTrackingWidget";
+import DocumentsWidget from "@/components/dashboard/DocumentsWidget";
 import { ArrowUpRight } from "lucide-react";
 
 const Dashboard = () => {
@@ -20,6 +24,13 @@ const Dashboard = () => {
                         <div className="col-span-12 lg:col-span-9 flex flex-col gap-8">
                             <StatisticsChart />
 
+                            {/* New Modules Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <ScheduleWidget />
+                                <ComplianceWidget />
+                                <TimeTrackingWidget />
+                            </div>
+
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">Ongoing Calls</h2>
                                 <ActiveCalls />
@@ -27,7 +38,7 @@ const Dashboard = () => {
                         </div>
 
                         {/* Right Sidebar Column */}
-                        <div className="col-span-12 lg:col-span-3 flex flex-col gap-2">
+                        <div className="col-span-12 lg:col-span-3 flex flex-col gap-6">
                             <UserList
                                 title="Starting calls"
                                 users={[
@@ -46,7 +57,9 @@ const Dashboard = () => {
                                 ]}
                             />
 
-                            <div className="mt-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-6 text-center relative overflow-hidden group cursor-pointer">
+                            <DocumentsWidget />
+
+                            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-6 text-center relative overflow-hidden group cursor-pointer">
                                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition-opacity">
                                     <ArrowUpRight className="text-white" />
                                 </div>

@@ -1,4 +1,4 @@
-import { Home, BarChart2, Users, Layers, Phone, Settings, LogOut } from 'lucide-react';
+import { Home, BarChart2, Users, Layers, Phone, Settings, LogOut, Calendar, ShieldCheck, FileText, Clock } from 'lucide-react';
 
 const Sidebar = () => {
     return (
@@ -9,15 +9,19 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <nav className="flex-1 flex flex-col gap-6 w-full items-center">
+            <nav className="flex-1 flex flex-col gap-6 w-full items-center overflow-y-auto no-scrollbar py-4">
                 <NavItem icon={<Home size={24} />} active />
-                <NavItem icon={<BarChart2 size={24} />} />
-                <NavItem icon={<Users size={24} />} />
+                <NavItem icon={<Users size={24} />} /> {/* Employee Management */}
+                <NavItem icon={<Calendar size={24} />} /> {/* Scheduling */}
+                <NavItem icon={<ShieldCheck size={24} />} /> {/* Compliance */}
+                <NavItem icon={<BarChart2 size={24} />} /> {/* Advanced Analytics */}
+                <NavItem icon={<FileText size={24} />} /> {/* Document Storage */}
+                <NavItem icon={<Clock size={24} />} /> {/* Time Tracking */}
                 <NavItem icon={<Layers size={24} />} />
                 <NavItem icon={<Phone size={24} />} badge="2" />
             </nav>
 
-            <div className="mt-auto flex flex-col gap-6 w-full items-center">
+            <div className="mt-auto flex flex-col gap-6 w-full items-center py-4 bg-[#1E1E2D]">
                 <NavItem icon={<Settings size={24} />} />
                 <NavItem icon={<LogOut size={24} />} />
             </div>
@@ -29,8 +33,8 @@ const NavItem = ({ icon, active = false, badge }: { icon: React.ReactNode; activ
     return (
         <button
             className={`relative p-3 rounded-xl transition-all duration-200 group ${active
-                    ? 'bg-gradient-to-br from-indigo-500/20 to-purple-500/20 text-indigo-400'
-                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                ? 'bg-gradient-to-br from-indigo-500/20 to-purple-500/20 text-indigo-400'
+                : 'text-gray-400 hover:bg-white/5 hover:text-white'
                 }`}
         >
             {icon}
