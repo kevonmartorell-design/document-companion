@@ -68,18 +68,22 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              className={cn(
-                isScrolled ? "" : "text-white hover:bg-white/10 hover:text-white"
-              )}
-            >
-              Sign In
-            </Button>
-            <Button variant="accent" size="sm" className="shadow-lg shadow-accent/20">
-              Start Free Trial
-            </Button>
+            <a href="/login">
+              <Button
+                variant="ghost"
+                size="sm"
+                className={cn(
+                  isScrolled ? "" : "text-white hover:bg-white/10 hover:text-white"
+                )}
+              >
+                Sign In
+              </Button>
+            </a>
+            <a href="/signup">
+              <Button variant="accent" size="sm" className="shadow-lg shadow-accent/20">
+                Start Free Trial
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -118,12 +122,16 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-border/10 flex flex-col gap-2">
-                <Button variant="ghost" className="w-full justify-start">
-                  Sign In
-                </Button>
-                <Button variant="accent" className="w-full">
-                  Start Free Trial
-                </Button>
+                <a href="/login">
+                  <Button variant="ghost" className="w-full justify-start">
+                    Sign In
+                  </Button>
+                </a>
+                <a href="/signup">
+                  <Button variant="accent" className="w-full">
+                    Start Free Trial
+                  </Button>
+                </a>
               </div>
             </div>
           </motion.div>
