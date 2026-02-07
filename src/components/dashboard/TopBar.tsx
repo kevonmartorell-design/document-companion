@@ -1,4 +1,5 @@
-import { Search, Bell, LogOut } from 'lucide-react';
+import { Search, LogOut } from 'lucide-react';
+import NotificationCenter from './NotificationCenter';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -17,13 +18,13 @@ const TopBar = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             if (!user) return;
-            
+
             const { data } = await supabase
                 .from('profiles')
                 .select('full_name, avatar_url')
                 .eq('user_id', user.id)
                 .single();
-            
+
             if (data) {
                 setProfile(data);
             }
@@ -74,6 +75,8 @@ const TopBar = () => {
                     <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
                     <span className="text-sm font-medium text-white">2 <span className="text-gray-400 font-normal">on break</span></span>
                 </div>
+
+                <NotificationCenter />
 
                 <div className="flex items-center gap-3 pl-6 border-l border-gray-800">
                     <div className="text-right">

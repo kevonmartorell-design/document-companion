@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Shield, Users, Calendar, CheckCircle } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const stats = [
@@ -49,16 +50,19 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-primary-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0 text-balance">
-              Schedule employees, track certifications, and manage compliance with our all-in-one B2B platform. 
+              Schedule employees, track certifications, and manage compliance with our all-in-one B2B platform.
               Perfect for solo operators to enterprise teams.
             </p>
 
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button variant="hero" size="xl" className="group">
-                Start Free Trial
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/signup">
+                <Button variant="hero" size="xl" className="group">
+                  Start Free Trial
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               <Button variant="heroOutline" size="xl" className="group">
                 <Play className="w-5 h-5" />
                 Watch Demo

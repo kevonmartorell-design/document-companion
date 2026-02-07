@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
@@ -112,21 +113,19 @@ const PricingSection = () => {
           <div className="inline-flex items-center gap-3 p-1 bg-muted rounded-xl">
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                billingCycle === "monthly"
-                  ? "bg-card shadow-sm text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${billingCycle === "monthly"
+                ? "bg-card shadow-sm text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               Monthly
             </button>
             <button
               onClick={() => setBillingCycle("annual")}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
-                billingCycle === "annual"
-                  ? "bg-card shadow-sm text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${billingCycle === "annual"
+                ? "bg-card shadow-sm text-foreground"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               Annual
               <span className="text-xs bg-success/10 text-success px-2 py-0.5 rounded-full">
@@ -145,11 +144,10 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative rounded-2xl p-6 flex flex-col ${
-                plan.popular
-                  ? "pricing-card-featured"
-                  : "bg-card border border-border shadow-card"
-              }`}
+              className={`relative rounded-2xl p-6 flex flex-col ${plan.popular
+                ? "pricing-card-featured"
+                : "bg-card border border-border shadow-card"
+                }`}
             >
               {/* Popular Badge */}
               {plan.popular && (
@@ -164,23 +162,20 @@ const PricingSection = () => {
               {/* Plan Header */}
               <div className="mb-6">
                 <span
-                  className={`text-xs font-semibold uppercase tracking-wider ${
-                    plan.popular ? "text-white/70" : "text-muted-foreground"
-                  }`}
+                  className={`text-xs font-semibold uppercase tracking-wider ${plan.popular ? "text-white/70" : "text-muted-foreground"
+                    }`}
                 >
                   {plan.tier}
                 </span>
                 <h3
-                  className={`font-display text-2xl font-bold mt-1 ${
-                    plan.popular ? "text-white" : "text-foreground"
-                  }`}
+                  className={`font-display text-2xl font-bold mt-1 ${plan.popular ? "text-white" : "text-foreground"
+                    }`}
                 >
                   {plan.name}
                 </h3>
                 <p
-                  className={`text-sm mt-2 ${
-                    plan.popular ? "text-white/70" : "text-muted-foreground"
-                  }`}
+                  className={`text-sm mt-2 ${plan.popular ? "text-white/70" : "text-muted-foreground"
+                    }`}
                 >
                   {plan.description}
                 </p>
@@ -190,25 +185,22 @@ const PricingSection = () => {
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
                   <span
-                    className={`font-display text-4xl font-bold ${
-                      plan.popular ? "text-white" : "text-foreground"
-                    }`}
+                    className={`font-display text-4xl font-bold ${plan.popular ? "text-white" : "text-foreground"
+                      }`}
                   >
                     ${billingCycle === "monthly" ? plan.monthlyPrice : Math.round(plan.annualPrice / 12)}
                   </span>
                   <span
-                    className={`text-sm ${
-                      plan.popular ? "text-white/70" : "text-muted-foreground"
-                    }`}
+                    className={`text-sm ${plan.popular ? "text-white/70" : "text-muted-foreground"
+                      }`}
                   >
                     /month
                   </span>
                 </div>
                 {billingCycle === "annual" && (
                   <p
-                    className={`text-sm mt-1 ${
-                      plan.popular ? "text-white/60" : "text-muted-foreground"
-                    }`}
+                    className={`text-sm mt-1 ${plan.popular ? "text-white/60" : "text-muted-foreground"
+                      }`}
                   >
                     Billed ${plan.annualPrice}/year
                   </p>
@@ -220,27 +212,28 @@ const PricingSection = () => {
                 {plan.features.map((feature, i) => (
                   <li
                     key={i}
-                    className={`flex items-start gap-2 text-sm ${
-                      plan.popular ? "text-white/90" : "text-foreground"
-                    }`}
+                    className={`flex items-start gap-2 text-sm ${plan.popular ? "text-white/90" : "text-foreground"
+                      }`}
                   >
                     <Check
-                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                        plan.popular ? "text-white" : "text-success"
-                      }`}
+                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? "text-white" : "text-success"
+                        }`}
                     />
                     {feature}
                   </li>
                 ))}
               </ul>
 
+
               {/* CTA */}
-              <Button
-                variant={plan.popular ? "heroOutline" : "default"}
-                className="w-full"
-              >
-                {plan.cta}
-              </Button>
+              <Link to="/signup" className="w-full">
+                <Button
+                  variant={plan.popular ? "heroOutline" : "default"}
+                  className="w-full"
+                >
+                  {plan.cta}
+                </Button>
+              </Link>
             </motion.div>
           ))}
         </div>

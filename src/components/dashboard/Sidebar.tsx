@@ -1,20 +1,35 @@
+import { Link, useLocation } from 'react-router-dom';
 import { Home, BarChart2, Users, Layers, Phone, Settings, LogOut, Calendar, ShieldCheck, FileText, Clock } from 'lucide-react';
 
 const Sidebar = () => {
+    const location = useLocation();
+
     return (
         <div className="h-screen w-20 bg-[#1E1E2D] flex flex-col items-center py-6 border-r border-gray-800">
             <div className="mb-10">
-                <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">N</span>
-                </div>
+                <Link to="/">
+                    <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <span className="text-white font-bold text-xl">N</span>
+                    </div>
+                </Link>
             </div>
 
             <nav className="flex-1 flex flex-col gap-6 w-full items-center overflow-y-auto no-scrollbar py-4">
-                <NavItem icon={<Home size={24} />} active />
-                <NavItem icon={<Users size={24} />} /> {/* Employee Management */}
-                <NavItem icon={<Calendar size={24} />} /> {/* Scheduling */}
-                <NavItem icon={<ShieldCheck size={24} />} /> {/* Compliance */}
-                <NavItem icon={<BarChart2 size={24} />} /> {/* Advanced Analytics */}
+                <Link to="/dashboard">
+                    <NavItem icon={<Home size={24} />} active={location.pathname === '/dashboard'} />
+                </Link>
+                <Link to="/dashboard/employees">
+                    <NavItem icon={<Users size={24} />} active={location.pathname === '/dashboard/employees'} />
+                </Link>
+                <Link to="/dashboard/schedule">
+                    <NavItem icon={<Calendar size={24} />} active={location.pathname === '/dashboard/schedule'} />
+                </Link>
+                <Link to="/dashboard/compliance">
+                    <NavItem icon={<ShieldCheck size={24} />} active={location.pathname === '/dashboard/compliance'} />
+                </Link>
+                <Link to="/dashboard/analytics">
+                    <NavItem icon={<BarChart2 size={24} />} active={location.pathname === '/dashboard/analytics'} />
+                </Link>
                 <NavItem icon={<FileText size={24} />} /> {/* Document Storage */}
                 <NavItem icon={<Clock size={24} />} /> {/* Time Tracking */}
                 <NavItem icon={<Layers size={24} />} />

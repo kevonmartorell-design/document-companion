@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   return (
@@ -23,16 +24,19 @@ const CTASection = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-primary-foreground/70 mb-10 max-w-2xl mx-auto">
-            Join thousands of businesses already using WorkForce Pro to schedule employees, 
+            Join thousands of businesses already using WorkForce Pro to schedule employees,
             track compliance, and grow their operations.
           </p>
 
+
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button variant="hero" size="xl" className="group">
-              Start Your Free Trial
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link to="/signup">
+              <Button variant="hero" size="xl" className="group">
+                Start Your Free Trial
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
             <Button variant="heroOutline" size="xl">
               Schedule a Demo
             </Button>

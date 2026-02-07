@@ -44,11 +44,11 @@ const Login = () => {
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-xl">W</span>
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-xl">W</span>
             </div>
             <span className="font-display font-bold text-2xl text-foreground">
-              WorkForce<span className="text-accent">Pro</span>
+              WorkForce<span className="text-primary">Pro</span>
             </span>
           </Link>
 
@@ -80,7 +80,7 @@ const Login = () => {
                 <Label htmlFor="password">Password</Label>
                 <Link
                   to="/forgot-password"
-                  className="text-sm text-accent hover:underline"
+                  className="text-sm text-primary hover:underline"
                 >
                   Forgot password?
                 </Link>
@@ -107,7 +107,6 @@ const Login = () => {
 
             <Button
               type="submit"
-              variant="accent"
               size="lg"
               className="w-full h-12"
               disabled={isLoading}
@@ -125,7 +124,7 @@ const Login = () => {
 
           <p className="text-center text-muted-foreground">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-accent font-medium hover:underline">
+            <Link to="/signup" className="text-primary font-medium hover:underline">
               Start free trial
             </Link>
           </p>

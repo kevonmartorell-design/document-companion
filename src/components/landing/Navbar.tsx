@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-lg">W</span>
             </div>
@@ -46,7 +47,7 @@ const Navbar = () => {
             )}>
               WorkForce<span className="text-accent">Pro</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -56,8 +57,8 @@ const Navbar = () => {
                 href={link.href}
                 className={cn(
                   "font-medium link-underline transition-colors",
-                  isScrolled 
-                    ? "text-muted-foreground hover:text-foreground" 
+                  isScrolled
+                    ? "text-muted-foreground hover:text-foreground"
                     : "text-white/80 hover:text-white"
                 )}
               >
@@ -68,7 +69,7 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="/login">
+            <Link to="/login">
               <Button
                 variant="ghost"
                 size="sm"
@@ -78,20 +79,20 @@ const Navbar = () => {
               >
                 Sign In
               </Button>
-            </a>
-            <a href="/signup">
+            </Link>
+            <Link to="/signup">
               <Button variant="accent" size="sm" className="shadow-lg shadow-accent/20">
                 Start Free Trial
               </Button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             className={cn(
               "md:hidden p-2 rounded-lg transition-colors",
-              isScrolled 
-                ? "hover:bg-muted text-foreground" 
+              isScrolled
+                ? "hover:bg-muted text-foreground"
                 : "hover:bg-white/10 text-white"
             )}
             onClick={() => setIsOpen(!isOpen)}
@@ -122,16 +123,16 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-border/10 flex flex-col gap-2">
-                <a href="/login">
+                <Link to="/login" onClick={() => setIsOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start">
                     Sign In
                   </Button>
-                </a>
-                <a href="/signup">
+                </Link>
+                <Link to="/signup" onClick={() => setIsOpen(false)}>
                   <Button variant="accent" className="w-full">
                     Start Free Trial
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>
